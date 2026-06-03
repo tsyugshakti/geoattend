@@ -21,6 +21,8 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--t)
 .llogo .li{font-size:3.5rem}
 .llogo h1{font-size:1.5rem;font-weight:900;color:var(--p);margin:8px 0 4px}
 .llogo p{color:var(--t2);font-size:.85rem}
+.lcopy{text-align:center;margin-top:18px;font-size:.73rem;color:var(--t2);letter-spacing:.3px}
+.lcopy a{color:var(--p);text-decoration:none;font-weight:700}
 .rtabs{display:flex;border-radius:10px;overflow:hidden;border:2px solid var(--bd);margin-bottom:22px}
 .rtab{flex:1;padding:11px;border:none;background:#f8f9fa;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--t2);transition:.2s}
 .rtab.on{background:var(--p);color:#fff}
@@ -117,6 +119,39 @@ tbody td{padding:10px 12px;vertical-align:middle}
 .s-au{background:#fff8e1;color:#f57f17}.s-it{background:#f3e5f5;color:#7b1fa2}.s-eh{background:#e0f7fa;color:#006064}
 .pthmb{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--bd);cursor:pointer;transition:.2s}
 .pthmb:hover{transform:scale(1.15);border-color:var(--p)}
+
+/* ── TRAINER PROFILE PAGE ── */
+#pg-trainer{display:none;padding:22px 15px;max-width:860px;margin:0 auto;animation:fi .3s}
+#pg-trainer.on{display:block}
+.tpback{display:flex;align-items:center;gap:9px;color:var(--p);font-weight:800;font-size:.9rem;cursor:pointer;margin-bottom:16px;width:fit-content}
+.tpback:hover{text-decoration:underline}
+.tphero{background:linear-gradient(135deg,#1a73e8,#0d47a1);border-radius:16px;padding:28px 24px;color:#fff;display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-bottom:18px}
+.tpavt{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.22);color:#fff;font-size:2rem;font-weight:900;display:flex;align-items:center;justify-content:center;border:3px solid rgba(255,255,255,.5);flex-shrink:0}
+.tpname{font-size:1.4rem;font-weight:900;margin-bottom:5px}
+.tpsub{font-size:.85rem;opacity:.85}
+.tpstatus{display:inline-block;padding:4px 14px;border-radius:20px;font-size:.8rem;font-weight:800;margin-top:8px}
+.tps-present{background:#e6f4ea;color:#0f9d58}
+.tps-absent{background:#fce8e6;color:#d93025}
+.tpgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:17px}
+@media(max-width:600px){.tpgrid{grid-template-columns:1fr}}
+.tpcard{background:#fff;border-radius:13px;box-shadow:0 2px 12px rgba(0,0,0,.09);padding:20px}
+.tpcard h3{font-size:.82rem;font-weight:800;color:var(--t2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:13px;display:flex;align-items:center;gap:6px}
+.tprow{display:flex;justify-content:space-between;align-items:flex-start;padding:8px 0;border-bottom:1px solid #f1f3f4;font-size:.84rem;gap:8px}
+.tprow:last-child{border:none}
+.tprl{color:var(--t2);font-weight:600;min-width:90px;flex-shrink:0}
+.tprv{font-weight:700;color:var(--t);text-align:right;word-break:break-all}
+.tpmap{width:100%;height:180px;border-radius:11px;background:linear-gradient(135deg,#e8f0fe,#c5e1a5);border:2px solid var(--bd);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;color:var(--t2);font-size:.82rem;font-weight:700;margin-top:10px}
+.tpattlist{max-height:260px;overflow-y:auto}
+.tpattrow{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f3f4;font-size:.82rem}
+.tpattrow:last-child{border:none}
+.tpstats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.tpstat{background:#f8f9fa;border-radius:10px;padding:13px 10px;text-align:center}
+.tpstat .v{font-size:1.4rem;font-weight:900}
+.tpstat .l{font-size:.7rem;color:var(--t2);font-weight:700;margin-top:2px}
+
+.footer{text-align:center;padding:18px 10px 10px;font-size:.72rem;color:var(--t2);border-top:1px solid var(--bd);margin-top:8px;letter-spacing:.3px}
+.footer a{color:var(--p);text-decoration:none;font-weight:800}
+
 @media(max-width:600px){.lbox{padding:26px 18px}.card{padding:15px 12px}.sg{grid-template-columns:1fr 1fr}.nu{display:none}.wb{flex-direction:column}}
 </style>
 </head>
@@ -127,6 +162,7 @@ tbody td{padding:10px 12px;vertical-align:middle}
   <p>YUG Teacher Attendance Portal — Telangana</p>
   <div class="spin"></div>
 </div>
+
 <div id="loginPg" class="lwrap" style="display:none">
   <div class="lbox">
     <div class="llogo">
@@ -140,25 +176,28 @@ tbody td{padding:10px 12px;vertical-align:middle}
     </div>
     <div id="lgAlt"></div>
     <div id="aForm">
-      <div class="fg"><label>Username</label><input class="fc" id="aU" value="admin"/></div>
-      <div class="fg"><label>Password</label><input class="fc" type="password" id="aP" value="admin123"/></div>
+      <div class="fg"><label>Username</label><input class="fc" id="aU" placeholder="Enter username"/></div>
+      <div class="fg"><label>Password</label><input class="fc" type="password" id="aP" placeholder="Enter password"/></div>
       <button class="btn bp bfull" onclick="doLogin('admin')">🔐 Admin Login</button>
-      <p style="text-align:center;margin-top:9px;font-size:.76rem;color:var(--t2)">Default: admin / admin123</p>
     </div>
     <div id="tForm" style="display:none">
       <div class="fg"><label>Phone Number (Login ID)</label><input class="fc" id="tU" placeholder="e.g. 9985649547"/></div>
-      <div class="fg"><label>Password</label><input class="fc" type="password" id="tP" placeholder="Default: pass123"/></div>
+      <div class="fg"><label>Password</label><input class="fc" type="password" id="tP" placeholder="Enter your password"/></div>
       <button class="btn bs bfull" onclick="doLogin('teacher')">🔐 Teacher Login</button>
-      <p style="text-align:center;margin-top:9px;font-size:.76rem;color:var(--t2)">Phone Number as ID | Password: pass123</p>
+      <p style="text-align:center;margin-top:9px;font-size:.76rem;color:var(--t2)">Use your Phone Number as Login ID</p>
     </div>
+    <div class="lcopy">© <a href="https://instagram.com/iamjeevapilli" target="_blank">@iamjeevapilli</a> · GeoAttend v2.0</div>
   </div>
 </div>
+
 <div id="app" style="display:none">
   <nav class="nav">
     <div class="nbrand">🏫 GeoAttend <span id="nRole" style="font-size:.72rem;opacity:.75;font-weight:400;margin-left:3px"></span></div>
     <div class="nr"><span id="clk"></span><span class="nu" id="nUser"></span><button class="blo" onclick="doLogout()">⬅️ Logout</button></div>
   </nav>
   <div class="tbar" id="tabBar"></div>
+
+  <!-- DASHBOARD -->
   <div class="pg on" id="pg-dashboard">
     <div id="wBanner"></div>
     <div class="sg" id="sGrid"></div>
@@ -171,6 +210,8 @@ tbody td{padding:10px 12px;vertical-align:middle}
       <div class="tw"><table><thead><tr><th>📸</th><th>Name</th><th>Phone</th><th>School</th><th>Time</th><th>Status</th><th>Dist</th></tr></thead><tbody id="rBody"></tbody></table></div>
     </div>
   </div>
+
+  <!-- RECORDS -->
   <div class="pg" id="pg-records">
     <div class="card"><div class="ctit">📁 All Attendance Records</div>
       <div class="fr">
@@ -184,8 +225,10 @@ tbody td{padding:10px 12px;vertical-align:middle}
       <div id="recPgr" style="margin-top:12px;text-align:center"></div>
     </div>
   </div>
+
+  <!-- TEACHERS LIST -->
   <div class="pg" id="pg-teachers">
-    <div class="card"><div class="ctit">👩‍🏫 All 206 Teachers</div>
+    <div class="card"><div class="ctit">👩‍🏫 All 206 Vocational Trainers</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:13px">
         <div class="srch" style="flex:1;min-width:160px"><span class="si2">🔍</span><input class="fc" id="tSr" placeholder="Search..." oninput="rTch()"/></div>
         <select id="tSF" onchange="rTch()" style="padding:8px 10px;border:1.5px solid var(--bd);border-radius:8px;font-size:.83rem;background:#fff">
@@ -199,6 +242,15 @@ tbody td{padding:10px 12px;vertical-align:middle}
       <div id="tPgr" style="margin-top:12px;text-align:center"></div>
     </div>
   </div>
+
+  <!-- TRAINER PROFILE (subfolder) -->
+  <div id="pg-trainer">
+    <div class="tpback" onclick="swPg('teachers')">← Back to Trainers List</div>
+    <div id="tpContent"></div>
+    <div class="footer">© <a href="https://instagram.com/iamjeevapilli" target="_blank">@iamjeevapilli</a> · GeoAttend YUG Telangana</div>
+  </div>
+
+  <!-- REPORTS -->
   <div class="pg" id="pg-reports">
     <div class="card"><div class="ctit">📈 Attendance Reports</div>
       <div class="fr">
@@ -210,6 +262,8 @@ tbody td{padding:10px 12px;vertical-align:middle}
       <div id="rptA"></div>
     </div>
   </div>
+
+  <!-- SETTINGS -->
   <div class="pg" id="pg-settings">
     <div class="card"><div class="ctit">⚙️ System Settings</div>
       <div class="sts">
@@ -238,8 +292,12 @@ tbody td{padding:10px 12px;vertical-align:middle}
       <div class="sts">
         <h3>🔑 Change Admin Password</h3>
         <div class="r2">
+          <div class="fg"><label>Current Password</label><input class="fc" type="password" id="cp0" placeholder="Current password"/></div>
           <div class="fg"><label>New Password</label><input class="fc" type="password" id="np1" placeholder="New password"/></div>
-          <div class="fg"><label>Confirm</label><input class="fc" type="password" id="np2" placeholder="Confirm password"/></div>
+        </div>
+        <div class="r2">
+          <div class="fg"><label>Confirm New Password</label><input class="fc" type="password" id="np2" placeholder="Confirm new password"/></div>
+          <div class="fg"></div>
         </div>
         <button class="btn bd2" onclick="chgPass()">🔒 Change Password</button>
       </div>
@@ -250,7 +308,10 @@ tbody td{padding:10px 12px;vertical-align:middle}
       </div>
       <div id="sAlt" style="margin-top:12px"></div>
     </div>
+    <div class="footer">© <a href="https://instagram.com/iamjeevapilli" target="_blank">@iamjeevapilli</a> · GeoAttend YUG Telangana</div>
   </div>
+
+  <!-- MARK ATTENDANCE -->
   <div class="pg" id="pg-mark">
     <div class="card" style="max-width:480px;margin:0 auto">
       <div class="ctit" style="flex-direction:column;text-align:center;gap:5px">
@@ -292,21 +353,27 @@ tbody td{padding:10px 12px;vertical-align:middle}
         <div id="subInfo" style="margin-top:13px;padding:12px;background:#f8f9fa;border-radius:9px;font-size:.83rem;text-align:left;line-height:1.9"></div>
       </div>
     </div>
+    <div class="footer">© <a href="https://instagram.com/iamjeevapilli" target="_blank">@iamjeevapilli</a> · GeoAttend YUG Telangana</div>
   </div>
+
+  <!-- MY HISTORY -->
   <div class="pg" id="pg-history">
     <div class="card"><div class="ctit">📅 My Attendance History</div>
       <div id="myS" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:15px"></div>
       <div class="tw"><table><thead><tr><th>#</th><th>Date</th><th>Day</th><th>Time</th><th>Status</th><th>Distance</th><th>Photo</th></tr></thead><tbody id="hBody"></tbody></table></div>
     </div>
+    <div class="footer">© <a href="https://instagram.com/iamjeevapilli" target="_blank">@iamjeevapilli</a> · GeoAttend YUG Telangana</div>
   </div>
 </div>
+
+<!-- MODALS -->
 <div class="mov" id="addTM">
   <div class="mbox">
-    <div class="mti">➕ Add New Teacher</div>
+    <div class="mti">➕ Add New Vocational Trainer</div>
     <div id="addAlt"></div>
     <div class="r2">
       <div class="fg"><label>Phone (Login ID)</label><input class="fc" id="nPh" placeholder="9999999999"/></div>
-      <div class="fg"><label>Full Name</label><input class="fc" id="nNm" placeholder="Teacher Full Name"/></div>
+      <div class="fg"><label>Full Name</label><input class="fc" id="nNm" placeholder="Trainer Full Name"/></div>
     </div>
     <div class="r2">
       <div class="fg"><label>Sector</label><select class="fc" id="nSec"><option>APPAREL</option><option>BEAUTY AND WELLNESS</option><option>HEALTH CARE</option><option>AUTOMOTIVE</option><option>IT/ITES</option><option>ELECTRONICS AND HARDWARE</option></select></div>
@@ -322,13 +389,14 @@ tbody td{padding:10px 12px;vertical-align:middle}
     </div>
     <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:7px">
       <button class="btn bo" onclick="closeModal('addTM')">Cancel</button>
-      <button class="btn bp" onclick="addTch()">✅ Add Teacher</button>
+      <button class="btn bp" onclick="addTch()">✅ Add Trainer</button>
     </div>
   </div>
 </div>
+
 <div class="mov" id="editTM">
   <div class="mbox">
-    <div class="mti">✏️ Edit Teacher</div>
+    <div class="mti">✏️ Edit Trainer Details</div>
     <input type="hidden" id="ePh"/>
     <div class="r2">
       <div class="fg"><label>Full Name</label><input class="fc" id="eNm"/></div>
@@ -348,6 +416,7 @@ tbody td{padding:10px 12px;vertical-align:middle}
     </div>
   </div>
 </div>
+
 <div class="mov" id="pvM">
   <div class="mbox" style="max-width:360px">
     <div class="mti" id="pvTit">📸 Attendance Photo</div>
@@ -356,13 +425,13 @@ tbody td{padding:10px 12px;vertical-align:middle}
     <button class="btn bo bfull" style="margin-top:12px" onclick="closeModal('pvM')">Close</button>
   </div>
 </div>
+
 <script>
 const DB={
   get:(k,d=null)=>{try{const v=localStorage.getItem('yugg_'+k);return v?JSON.parse(v):d}catch{return d}},
   set:(k,v)=>localStorage.setItem('yugg_'+k,JSON.stringify(v))
 };
 
-// ALL 206 TEACHERS
 const SEED=[
 {ph:"9985649547",name:"RAPELLI RAJITHA",sector:"APPAREL",school:"GGHS SIDDIPET",yug:"YUG/HR/25-26/TG/ARL-19",lat:18.107056,lng:78.846858,pass:"pass123"},
 {ph:"9705526247",name:"CHINTHAMALLA NAVYA",sector:"BEAUTY AND WELLNESS",school:"ZPHS CHIVVEMLA",yug:"YUG/HR/25-26/TG/BW-126",lat:17.1528839,lng:79.6870011,pass:"pass123"},
@@ -572,18 +641,14 @@ const SEED=[
 {ph:"9550327064",name:"PABBA SREELATHA",sector:"AUTOMOTIVE",school:"PM SREE ZPHS SINGANNAGUDA",yug:"YUG/HR/25-26/TG/AU-47",lat:17.722814,lng:78.545389,pass:"pass123"}
 ];
 
-// FORCE RELOAD WITH ALL 206 TEACHERS
 function initApp(){
-  // Always reload teachers from SEED to ensure all 206 are present
-  const existing = DB.get('att',[]);
-  const existingPass = DB.get('adminPass','admin123');
-  DB.set('adminPass', existingPass);
-  DB.set('settings', DB.get('settings',{name:'YUG Educational Dept - Telangana',lat:17.3850,lng:78.4867,radius:300,open:'06:00',close:'10:30'}));
-  DB.set('teachers', SEED); // Always reload all 206 teachers
-  DB.set('att', existing); // Keep existing attendance records
-  DB.set('init5', true);
+  const existing=DB.get('att',[]);
+  const existingPass=DB.get('adminPass','admin123');
+  DB.set('adminPass',existingPass);
+  DB.set('settings',DB.get('settings',{name:'YUG Educational Dept - Telangana',lat:17.3850,lng:78.4867,radius:300,open:'06:00',close:'10:30'}));
+  DB.set('teachers',SEED);
+  DB.set('att',existing);
 }
-
 initApp();
 
 setTimeout(()=>{
@@ -632,44 +697,150 @@ function doLogin(r){
   if(r==='admin'){
     if($('aU').value==='admin'&&$('aP').value===DB.get('adminPass')){
       CU={name:'Administrator',role:'admin'};boot();
-    }else sAlt('lgAlt','❌ Wrong credentials. Try admin / admin123','error');
+    }else sAlt('lgAlt','❌ Invalid credentials. Please try again.','error');
   }else{
     const ph=$('tU').value.trim(),pass=$('tP').value;
     const t=DB.get('teachers',[]).find(x=>x.ph===ph&&x.pass===pass);
     if(t){CU={...t,role:'teacher'};boot();}
-    else sAlt('lgAlt','❌ Wrong Phone Number or Password. Default password: pass123','error');
+    else sAlt('lgAlt','❌ Wrong Phone Number or Password.','error');
   }
 }
 function doLogout(){stopCam();CU=null;PHOTO=null;LOC=null;$('app').style.display='none';$('loginPg').style.display='flex';}
 function resetAll(){
-  if(confirm('Reset ALL teachers list to original 206 teachers?')){
-    DB.set('teachers',SEED);
-    alert('✅ All 206 teachers reloaded!');
-    rTch();rDash();
+  if(confirm('Reset ALL teachers list to original 206 trainers?')){
+    DB.set('teachers',SEED);alert('✅ All 206 trainers reloaded!');rTch();rDash();
   }
 }
 function boot(){
   $('loginPg').style.display='none';$('app').style.display='block';
   $('nUser').textContent=CU.name;
   $('nRole').textContent=CU.role==='admin'?'(Admin)':'(Teacher)';
-  buildTabs();
-  swPg(CU.role==='admin'?'dashboard':'mark');
+  buildTabs();swPg(CU.role==='admin'?'dashboard':'mark');
   if(CU.role==='admin'){loadSet();rDash();}
 }
 function buildTabs(){
   const tabs=CU.role==='admin'
-    ?[['dashboard','📊 Dashboard'],['records','📁 Records'],['teachers','👩‍🏫 Teachers'],['reports','📈 Reports'],['settings','⚙️ Settings']]
+    ?[['dashboard','📊 Dashboard'],['records','📁 Records'],['teachers','👩‍🏫 Trainers'],['reports','📈 Reports'],['settings','⚙️ Settings']]
     :[['mark','📸 Mark Attendance'],['history','📅 My History']];
   $('tabBar').innerHTML=tabs.map(([id,l])=>`<button class="tbtn" id="tb-${id}" onclick="swPg('${id}')">${l}</button>`).join('');
 }
+
+// Hide trainer page from regular page switching
 function swPg(id){
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('on'));
+  $('pg-trainer').classList.remove('on');
+
   const pg=$('pg-'+id),tb=$('tb-'+id);
-  if(pg)pg.classList.add('on');if(tb)tb.classList.add('on');
+  if(pg)pg.classList.add('on');
+  if(tb)tb.classList.add('on');
+
   const fn={dashboard:rDash,records:rRec,teachers:rTch,reports:()=>{},settings:loadSet,mark:resetMark,history:rHist};
   if(fn[id])fn[id]();
 }
+
+// Open trainer profile subfolder
+function openTrainer(ph){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('on'));
+  const tb=$('tb-teachers');if(tb)tb.classList.add('on');
+
+  const t=DB.get('teachers',[]).find(x=>x.ph===ph);
+  if(!t)return;
+
+  const att=DB.get('att',[]).filter(a=>a.teacherID===ph);
+  const pr=att.filter(a=>a.status==='approved');
+  const td=today();
+  const todayAtt=att.find(a=>a.date===td&&a.status==='approved');
+  const isPresent=!!todayAtt;
+
+  // Last 30 days attendance
+  const last30=[];
+  for(let i=0;i<30;i++){
+    const d=new Date();d.setDate(d.getDate()-i);
+    const ds=d.toISOString().split('T')[0];
+    const a=att.find(x=>x.date===ds&&x.status==='approved');
+    last30.push({date:ds,day:d.toLocaleDateString('en',{weekday:'short'}),present:!!a,rec:a});
+  }
+
+  const mapsUrl=`https://www.google.com/maps?q=${t.lat},${t.lng}`;
+
+  $('tpContent').innerHTML=`
+    <div class="tphero">
+      <div class="tpavt">${t.name[0]}</div>
+      <div style="flex:1">
+        <div class="tpname">${t.name}</div>
+        <div class="tpsub">📱 ${t.ph} &nbsp;·&nbsp; ${t.yug||'—'}</div>
+        <div class="tpsub" style="margin-top:4px">🏫 ${t.school}</div>
+        <div class="tpstatus ${isPresent?'tps-present':'tps-absent'}">${isPresent?'✅ Present Today':'❌ Absent Today'}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <button class="btn bo" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4);color:#fff;font-size:.8rem" onclick="oEdit('${t.ph}')">✏️ Edit</button>
+        <button class="btn bd2" style="font-size:.8rem" onclick="delTfromProfile('${t.ph}')">🗑️ Delete</button>
+      </div>
+    </div>
+
+    <div class="tpstats">
+      <div class="tpstat"><div class="v" style="color:var(--s)">${pr.length}</div><div class="l">Days Present</div></div>
+      <div class="tpstat"><div class="v" style="color:var(--p)">${att.length}</div><div class="l">Total Records</div></div>
+      <div class="tpstat"><div class="v" style="color:var(--o)">${att.length?Math.round(pr.length/att.length*100):0}%</div><div class="l">Attendance Rate</div></div>
+    </div>
+
+    <div class="tpgrid">
+      <div class="tpcard">
+        <h3>👤 Personal Details</h3>
+        <div class="tprow"><span class="tprl">Phone</span><span class="tprv">${t.ph}</span></div>
+        <div class="tprow"><span class="tprl">Full Name</span><span class="tprv">${t.name}</span></div>
+        <div class="tprow"><span class="tprl">Sector</span><span class="tprv">${sBadge(t.sector)}</span></div>
+        <div class="tprow"><span class="tprl">YUG ID</span><span class="tprv" style="font-size:.76rem">${t.yug||'—'}</span></div>
+      </div>
+      <div class="tpcard">
+        <h3>🏫 School Details</h3>
+        <div class="tprow"><span class="tprl">School</span><span class="tprv">${t.school}</span></div>
+        <div class="tprow"><span class="tprl">Latitude</span><span class="tprv">${t.lat||'—'}</span></div>
+        <div class="tprow"><span class="tprl">Longitude</span><span class="tprv">${t.lng||'—'}</span></div>
+        <div class="tprow"><span class="tprl">Maps</span><span class="tprv"><a href="${mapsUrl}" target="_blank" style="color:var(--p);font-weight:700;font-size:.8rem">📍 Open in Maps</a></span></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px" class="tpgrid">
+      <div class="tpcard">
+        <h3>📅 Last 30 Days</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:4px">
+          ${last30.reverse().map(d=>`<div title="${d.date} (${d.day})" style="width:28px;height:28px;border-radius:5px;background:${d.present?'#0f9d58':'#fce8e6'};display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:${d.present?'#fff':'#d93025'};cursor:default" title="${d.date}">${d.day[0]}</div>`).join('')}
+        </div>
+        <p style="font-size:.72rem;color:var(--t2);margin-top:10px">🟢 Present &nbsp; 🔴 Absent/No record</p>
+      </div>
+      <div class="tpcard">
+        <h3>📋 Recent Attendance</h3>
+        <div class="tpattlist">
+          ${att.length===0?'<p style="color:var(--t2);font-size:.82rem;padding:10px 0">No records found</p>'
+          :att.slice(-10).reverse().map(a=>`
+            <div class="tpattrow">
+              <div>
+                <div style="font-weight:700;font-size:.82rem">${a.date} <span style="color:var(--t2);font-weight:400">${a.time}</span></div>
+                <div style="font-size:.73rem;color:var(--t2)">${a.distance!=null?a.distance+'m from school':''}</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:7px">
+                <span class="badge ${a.status==='approved'?'bg-g':'bg-r'}">${a.status==='approved'?'✅':'❌'}</span>
+                ${a.photo?`<img class="pthmb" style="width:32px;height:32px" src="${a.photo}" onclick="vPh('${a.photo}','${t.name}','${a.date} ${a.time}')"/>`:''}
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  $('pg-trainer').classList.add('on');
+  window.scrollTo(0,0);
+}
+
+function delTfromProfile(ph){
+  if(!confirm('Delete this trainer?'))return;
+  DB.set('teachers',DB.get('teachers',[]).filter(t=>t.ph!==ph));
+  swPg('teachers');
+}
+
 function rDash(){
   const att=DB.get('att',[]),tch=DB.get('teachers',[]),td=today();
   const ta=att.filter(a=>a.date===td);
@@ -678,20 +849,21 @@ function rDash(){
   const s=DB.get('settings',{});
   $('wBanner').innerHTML=`<div class="wb"><div><h2>👋 Welcome, Administrator!</h2><p>${s.name||'YUG Dept'} — ${new Date().toLocaleDateString('en',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}</p></div><span style="font-size:2.8rem">🏫</span></div>`;
   $('sGrid').innerHTML=`
-    <div class="sc cb"><span class="si">👩‍🏫</span><div><div class="sv">${tch.length}</div><div class="sl">Total Teachers</div></div></div>
+    <div class="sc cb"><span class="si">👩‍🏫</span><div><div class="sv">${tch.length}</div><div class="sl">Total Trainers</div></div></div>
     <div class="sc cg"><span class="si">✅</span><div><div class="sv">${ap.length}</div><div class="sl">Present Today</div></div></div>
     <div class="sc cr"><span class="si">❌</span><div><div class="sv">${tch.length-ap.length}</div><div class="sl">Absent Today</div></div></div>
     <div class="sc co"><span class="si">📊</span><div><div class="sv">${pct}%</div><div class="sl">Rate</div></div></div>`;
-  $('progA').innerHTML=`<div style="display:flex;justify-content:space-between;font-weight:800;font-size:.86rem;margin-bottom:5px"><span>Attendance Rate</span><span style="color:var(--p)">${pct}%</span></div><div class="pw"><div class="pb" style="width:${pct}%"></div></div><p style="color:var(--t2);font-size:.78rem;margin-top:6px">${ap.length} of ${tch.length} teachers present</p><hr style="margin:12px 0;border:none;border-top:1px solid var(--bd)"><div style="font-size:.81rem;line-height:1.9"><div>🕐 Window: ${s.open||'06:00'} – ${s.close||'10:30'}</div><div>📍 Radius: ${s.radius||300}m per school</div><div>👥 Total Staff: ${tch.length}</div></div>`;
+  $('progA').innerHTML=`<div style="display:flex;justify-content:space-between;font-weight:800;font-size:.86rem;margin-bottom:5px"><span>Attendance Rate</span><span style="color:var(--p)">${pct}%</span></div><div class="pw"><div class="pb" style="width:${pct}%"></div></div><p style="color:var(--t2);font-size:.78rem;margin-top:6px">${ap.length} of ${tch.length} trainers present</p><hr style="margin:12px 0;border:none;border-top:1px solid var(--bd)"><div style="font-size:.81rem;line-height:1.9"><div>🕐 Window: ${s.open||'06:00'} – ${s.close||'10:30'}</div><div>📍 Radius: ${s.radius||300}m per school</div><div>👥 Total Staff: ${tch.length}</div></div>`;
   const marked=new Set(ta.map(a=>a.teacherID));
   const absent=tch.filter(t=>!marked.has(t.ph));
-  $('absA').innerHTML=absent.length===0?`<div class="alt a-s">🎉 All ${tch.length} teachers marked attendance today!</div>`
-    :`<div style="font-size:.8rem;font-weight:800;color:var(--d);margin-bottom:6px">⚠️ ${absent.length} teachers absent</div>`
-    +absent.slice(0,8).map(t=>`<div style="padding:5px 0;border-bottom:1px solid var(--bd);font-size:.81rem"><strong>${t.name}</strong> <span class="badge bg-b">${t.ph}</span><br><span style="font-size:.72rem;color:var(--t2)">${t.school}</span></div>`).join('')
+  $('absA').innerHTML=absent.length===0?`<div class="alt a-s">🎉 All ${tch.length} trainers marked attendance today!</div>`
+    :`<div style="font-size:.8rem;font-weight:800;color:var(--d);margin-bottom:6px">⚠️ ${absent.length} trainers absent</div>`
+    +absent.slice(0,8).map(t=>`<div style="padding:5px 0;border-bottom:1px solid var(--bd);font-size:.81rem;cursor:pointer" onclick="openTrainer('${t.ph}')"><strong>${t.name}</strong> <span class="badge bg-b">${t.ph}</span><br><span style="font-size:.72rem;color:var(--t2)">${t.school}</span></div>`).join('')
     +(absent.length>8?`<p style="color:var(--t2);font-size:.76rem;margin-top:6px">+${absent.length-8} more</p>`:'');
-  $('rBody').innerHTML=att.slice(-10).reverse().map(a=>`<tr><td>${a.photo?`<img class="pthmb" src="${a.photo}" onclick="vPh('${a.photo}','${a.teacherName}','${a.date} ${a.time}')">`:'—'}</td><td><strong>${a.teacherName||'?'}</strong></td><td><span class="badge bg-b">${a.teacherID}</span></td><td style="font-size:.76rem">${a.school||'—'}</td><td>${a.time}</td><td><span class="badge ${a.status==='approved'?'bg-g':'bg-r'}">${a.status==='approved'?'✅':'❌'}</span></td><td>${a.distance!=null?a.distance+'m':'—'}</td></tr>`).join('')
+  $('rBody').innerHTML=att.slice(-10).reverse().map(a=>`<tr><td>${a.photo?`<img class="pthmb" src="${a.photo}" onclick="vPh('${a.photo}','${a.teacherName}','${a.date} ${a.time}')">`:'—'}</td><td><strong style="cursor:pointer;color:var(--p)" onclick="openTrainer('${a.teacherID}')">${a.teacherName||'?'}</strong></td><td><span class="badge bg-b">${a.teacherID}</span></td><td style="font-size:.76rem">${a.school||'—'}</td><td>${a.time}</td><td><span class="badge ${a.status==='approved'?'bg-g':'bg-r'}">${a.status==='approved'?'✅':'❌'}</span></td><td>${a.distance!=null?a.distance+'m':'—'}</td></tr>`).join('')
   ||`<tr><td colspan="7"><div class="emp"><div class="ei">📭</div><p>No records yet today</p></div></td></tr>`;
 }
+
 function rRec(){
   let d=[...DB.get('att',[])].reverse();
   const fd=$('fD').value,fs=$('fSt').value,fsc=$('fSec').value,q=($('fSr').value||'').toLowerCase();
@@ -700,10 +872,11 @@ function rRec(){
   if(q)d=d.filter(a=>(a.teacherName||'').toLowerCase().includes(q)||(a.teacherID||'').toLowerCase().includes(q));
   const pages=Math.ceil(d.length/PP)||1;if(RP>pages)RP=1;
   const sl=d.slice((RP-1)*PP,RP*PP);
-  $('aBody').innerHTML=sl.length?sl.map((a,i)=>`<tr><td>${(RP-1)*PP+i+1}</td><td>${a.photo?`<img class="pthmb" src="${a.photo}" onclick="vPh('${a.photo}','${a.teacherName}','${a.date} ${a.time}')">`:'—'}</td><td><strong>${a.teacherName||'?'}</strong></td><td>${a.teacherID}</td><td>${sBadge(a.sector)}</td><td style="font-size:.75rem">${a.school||'—'}</td><td>${a.date}</td><td>${a.time}</td><td><span class="badge ${a.status==='approved'?'bg-g':'bg-r'}">${a.status==='approved'?'✅ OK':'❌ Out'}</span></td><td>${a.distance!=null?a.distance+'m':'—'}</td></tr>`).join('')
+  $('aBody').innerHTML=sl.length?sl.map((a,i)=>`<tr><td>${(RP-1)*PP+i+1}</td><td>${a.photo?`<img class="pthmb" src="${a.photo}" onclick="vPh('${a.photo}','${a.teacherName}','${a.date} ${a.time}')">`:'—'}</td><td><strong style="cursor:pointer;color:var(--p)" onclick="openTrainer('${a.teacherID}')">${a.teacherName||'?'}</strong></td><td>${a.teacherID}</td><td>${sBadge(a.sector)}</td><td style="font-size:.75rem">${a.school||'—'}</td><td>${a.date}</td><td>${a.time}</td><td><span class="badge ${a.status==='approved'?'bg-g':'bg-r'}">${a.status==='approved'?'✅ OK':'❌ Out'}</span></td><td>${a.distance!=null?a.distance+'m':'—'}</td></tr>`).join('')
     :`<tr><td colspan="10"><div class="emp"><div class="ei">📭</div><p>No records found</p></div></td></tr>`;
   mkPgr('recPgr',pages,RP,p=>{RP=p;rRec()});
 }
+
 function rTch(){
   const all=DB.get('teachers',[]);
   const q=($('tSr').value||'').toLowerCase(),sf=$('tSF').value||'';
@@ -713,11 +886,27 @@ function rTch(){
   const pIDs=new Set(att.filter(a=>a.date===td&&a.status==='approved').map(a=>a.teacherID));
   const pages=Math.ceil(list.length/PP)||1;if(TP>pages)TP=1;
   const sl=list.slice((TP-1)*PP,TP*PP);
-  $('tSum').innerHTML=`<p style="font-size:.81rem;color:var(--t2)">Total: <strong>${all.length}</strong> teachers | Showing: <strong>${list.length}</strong> | ✅ Present: <strong style="color:var(--s)">${pIDs.size}</strong> | ❌ Absent: <strong style="color:var(--d)">${all.length-pIDs.size}</strong></p>`;
-  $('tList').innerHTML=sl.length?sl.map(t=>`<div class="tc"><div class="tl"><div class="ta">${t.name[0]}</div><div><div class="tn">${t.name} <span class="badge bg-b">${t.ph}</span> ${pIDs.has(t.ph)?'<span class="badge bg-g">✅</span>':'<span class="badge bg-r">❌</span>'}</div><div class="tsub">${sBadge(t.sector)} 🏫 ${t.school}</div><div class="tsub" style="font-size:.7rem;color:#888">${t.yug||''}</div></div></div><div class="tact"><button class="btn bo" style="padding:5px 10px;font-size:.76rem" onclick="oEdit('${t.ph}')">✏️</button><button class="btn bd2" style="padding:5px 10px;font-size:.76rem" onclick="delT('${t.ph}')">🗑️</button></div></div>`).join('')
-    :`<div class="emp"><div class="ei">👩‍🏫</div><p>No teachers found</p></div>`;
+  $('tSum').innerHTML=`<p style="font-size:.81rem;color:var(--t2)">Total: <strong>${all.length}</strong> trainers | Showing: <strong>${list.length}</strong> | ✅ Present: <strong style="color:var(--s)">${pIDs.size}</strong> | ❌ Absent: <strong style="color:var(--d)">${all.length-pIDs.size}</strong></p>`;
+  $('tList').innerHTML=sl.length?sl.map(t=>`
+    <div class="tc" style="cursor:pointer" onclick="openTrainer('${t.ph}')">
+      <div class="tl">
+        <div class="ta">${t.name[0]}</div>
+        <div>
+          <div class="tn">${t.name} <span class="badge bg-b">${t.ph}</span> ${pIDs.has(t.ph)?'<span class="badge bg-g">✅</span>':'<span class="badge bg-r">❌</span>'}</div>
+          <div class="tsub">${sBadge(t.sector)} 🏫 ${t.school}</div>
+          <div class="tsub" style="font-size:.7rem;color:#888">${t.yug||''}</div>
+        </div>
+      </div>
+      <div class="tact" onclick="event.stopPropagation()">
+        <button class="btn bo" style="padding:5px 10px;font-size:.76rem" onclick="oEdit('${t.ph}')">✏️</button>
+        <button class="btn bd2" style="padding:5px 10px;font-size:.76rem" onclick="delT('${t.ph}')">🗑️</button>
+        <button class="btn bp" style="padding:5px 10px;font-size:.76rem" onclick="openTrainer('${t.ph}')">👁️</button>
+      </div>
+    </div>`).join('')
+    :`<div class="emp"><div class="ei">👩‍🏫</div><p>No trainers found</p></div>`;
   mkPgr('tPgr',pages,TP,p=>{TP=p;rTch()});
 }
+
 function addTch(){
   const ph=$('nPh').value.trim(),nm=$('nNm').value.trim();
   if(!ph||!nm){sAlt('addAlt','⚠️ Phone and Name required','error');return;}
@@ -742,9 +931,11 @@ function saveEdit(){
   all[i].sector=$('eSec').value;
   const p=$('ePas').value.trim();if(p)all[i].pass=p;
   DB.set('teachers',all);closeModal('editTM');rTch();
+  // Refresh trainer profile if currently open
+  if($('pg-trainer').classList.contains('on'))openTrainer(ph);
 }
-function delT(ph){if(!confirm('Delete this teacher?'))return;DB.set('teachers',DB.get('teachers',[]).filter(t=>t.ph!==ph));rTch();rDash();}
-function expTch(){const all=DB.get('teachers',[]);dlCSV([['Phone','Name','Sector','School','YUG ID'],...all.map(t=>[t.ph,t.name,t.sector,t.school,t.yug||''])],'teachers.csv');}
+function delT(ph){if(!confirm('Delete this trainer?'))return;DB.set('teachers',DB.get('teachers',[]).filter(t=>t.ph!==ph));rTch();rDash();}
+function expTch(){const all=DB.get('teachers',[]);dlCSV([['Phone','Name','Sector','School','YUG ID'],...all.map(t=>[t.ph,t.name,t.sector,t.school,t.yug||''])],'trainers.csv');}
 function genRpt(){
   let att=DB.get('att',[]);
   const f=$('rpF').value,t=$('rpT').value;
@@ -756,7 +947,7 @@ function genRpt(){
     byT[a.teacherID].tot++;if(a.status==='approved')byT[a.teacherID].pr++;else byT[a.teacherID].rj++;
   });
   const rows=Object.values(byT).sort((a,b)=>b.pr-a.pr);
-  $('rptA').innerHTML=rows.length?`<div class="tw"><table><thead><tr><th>Name</th><th>Phone</th><th>Sector</th><th>School</th><th>Present</th><th>Rejected</th><th>Total</th><th>Rate</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${r.name}</strong></td><td>${r.id}</td><td>${sBadge(r.sector)}</td><td style="font-size:.76rem">${r.school}</td><td style="color:var(--s);font-weight:800">${r.pr}</td><td style="color:var(--d);font-weight:800">${r.rj}</td><td>${r.tot}</td><td><span class="badge ${r.pr/Math.max(r.tot,1)>.8?'bg-g':r.pr/Math.max(r.tot,1)>.5?'bg-o':'bg-r'}">${r.tot?Math.round(r.pr/r.tot*100):0}%</span></td></tr>`).join('')}</tbody></table></div>`
+  $('rptA').innerHTML=rows.length?`<div class="tw"><table><thead><tr><th>Name</th><th>Phone</th><th>Sector</th><th>School</th><th>Present</th><th>Rejected</th><th>Total</th><th>Rate</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong style="cursor:pointer;color:var(--p)" onclick="openTrainer('${r.id}')">${r.name}</strong></td><td>${r.id}</td><td>${sBadge(r.sector)}</td><td style="font-size:.76rem">${r.school}</td><td style="color:var(--s);font-weight:800">${r.pr}</td><td style="color:var(--d);font-weight:800">${r.rj}</td><td>${r.tot}</td><td><span class="badge ${r.pr/Math.max(r.tot,1)>.8?'bg-g':r.pr/Math.max(r.tot,1)>.5?'bg-o':'bg-r'}">${r.tot?Math.round(r.pr/r.tot*100):0}%</span></td></tr>`).join('')}</tbody></table></div>`
     :`<div class="emp"><div class="ei">📊</div><p>Select date range and click Generate</p></div>`;
 }
 function expRpt(){
@@ -781,11 +972,13 @@ function getMyLoc(){
   navigator.geolocation.getCurrentPosition(p=>{$('sLa').value=p.coords.latitude.toFixed(7);$('sLo').value=p.coords.longitude.toFixed(7);sAlt('sAlt','✅ Location captured! Click Save Settings.','success');},e=>sAlt('sAlt','❌ '+e.message,'error'));
 }
 function chgPass(){
-  const p1=$('np1').value.trim(),p2=$('np2').value.trim();
+  const c=$('cp0').value.trim(),p1=$('np1').value.trim(),p2=$('np2').value.trim();
+  if(!c)return sAlt('sAlt','⚠️ Enter current password','error');
+  if(c!==DB.get('adminPass'))return sAlt('sAlt','❌ Current password is incorrect','error');
   if(!p1)return sAlt('sAlt','⚠️ Enter new password','error');
-  if(p1!==p2)return sAlt('sAlt','❌ Passwords do not match','error');
-  DB.set('adminPass',p1);sAlt('sAlt','✅ Password changed!','success');
-  $('np1').value='';$('np2').value='';
+  if(p1!==p2)return sAlt('sAlt','❌ New passwords do not match','error');
+  DB.set('adminPass',p1);sAlt('sAlt','✅ Password changed successfully!','success');
+  $('cp0').value='';$('np1').value='';$('np2').value='';
 }
 function chkLoc(){
   const t=CU;
